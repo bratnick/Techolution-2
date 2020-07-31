@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validateForm(){
+            var year = document.forms["f1"]["year"].value;
+            if(year > 2017){
+                alert('Year must be less than or equal to 2017');
+                document.forms['f1']['submit'].style.display = none;
+                return false;
+            }
+            var percent = document.forms["f1"]["percent"].value;
+            if(isNaN(percent)){
+                alert('Percentage should be a number');
+                return false;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function(e) {
+    const demoForm = document.getElementById('demoForm'); 
+
+    // Get the submit button element
+    /*const submitButton = demoForm.querySelector('[type="submit"]');
+
+    FormValidation.formValidation(
+        demoForm,
+        {
+            fields: {
+                ...
+            },
+            plugins: {
+                fieldStatus: new FormValidation.plugins.FieldStatus({
+                    onStatusChanged: function(areFieldsValid) {
+                        areFieldsValid
+                            // Enable the submit button
+                            // so user has a chance to submit the form again
+                            ? submitButton.removeAttribute('disabled')
+                            // Disable the submit button
+                            : submitButton.setAttribute('disabled', 'disabled'); 
+                    }
+                }),
+                ...
+            },
+        }
+    );*/
+});
+    </script>
+</head>
+<body>
+    <form id='demoForm' name="f1" onsubmit="return validateForm()">
+        Name: <input name="fname" type="text" maxlength="20" pattern="[a-zA-Z]"><br>
+        Last Name: <input name="lname" type="text" maxlength="20" pattern="[a-zA-Z]"><br>
+        Class: <input name="class" type="text" pattern="[a-zA-Z0-9]"><br>
+        Year of Passing: <input name="year" type="text"><br>
+        Percentage of Marks: <input name="percent" type="text"><br>
+        <input name="submit" type="submit">
+    </form>
+</body>
+</html>
